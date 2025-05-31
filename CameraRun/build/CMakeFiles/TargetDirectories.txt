@@ -1,0 +1,3 @@
+/home/khogaly/gp/CameraRun/build/CMakeFiles/camera.dir
+/home/khogaly/gp/CameraRun/build/CMakeFiles/edit_cache.dir
+/home/khogaly/gp/CameraRun/build/CMakeFiles/rebuild_cache.dir

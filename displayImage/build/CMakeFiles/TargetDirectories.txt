@@ -1,0 +1,3 @@
+/home/khogaly/gp/displayImage/build/CMakeFiles/DisplayImage.dir
+/home/khogaly/gp/displayImage/build/CMakeFiles/edit_cache.dir
+/home/khogaly/gp/displayImage/build/CMakeFiles/rebuild_cache.dir
