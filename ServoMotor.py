@@ -1,7 +1,7 @@
 import pigpio
 from enum import Enum
 import array
-
+import time
 # Enum for hardware PWM pins (same as before)
 class HardwarePWMPin(Enum):
     PWM0_GPIO12 = 12  # PWM channel 0
@@ -56,3 +56,21 @@ class ServoMotorPWM:
         """Clean up and stop the servo motor."""
         self.stop()
         self.pi.stop()
+
+
+
+
+def test_servo():
+    servo = ServoMotorPWM(HardwarePWMPin.PWM0_GPIO12)  # Change to your actual pin
+
+    try:
+        servo.set_angle(90)
+        time.sleep(1)  # Wait for servo to move
+
+        servo.stop()
+
+    finally:
+        servo.cleanup()
+
+# Run the test
+test_servo()

@@ -7,6 +7,7 @@ def process_LaneDetection(img):
     Args:
     - img: Input image.
     """
+    cv2.imshow("org",img)
     # Apply Gaussian blur to smooth the image and reduce noise
     blurred = cv2.GaussianBlur(img, (5, 5), 0)
     
@@ -15,7 +16,7 @@ def process_LaneDetection(img):
     
     # Perform edge detection using the Canny algorithm
     edges = cv2.Canny(gray, 75, 150)
-
+    cv2.imshow("EdgeDetections",edges)
     # Get the dimensions of the edge-detected image
     height, width = edges.shape
     
@@ -24,10 +25,10 @@ def process_LaneDetection(img):
     
     # Define the region of interest (ROI) as a polygon (trapezoid) for lane detection
     roi_corners = np.array([[
-        (int(width * 0.1), height),  # bottom left
-        (int(width * 0.45), int(height * 0.75)),  # top left
-        (int(width * 0.55), int(height * 0.75)),  # top right
-        (int(width * 0.9), height)  # bottom right
+        (int(0), 380),  # bottom left
+        (int(0), int(270)),  # top left
+        (int(520), int(270)),  # top right
+        (int(633), 380)  # bottom right
     ]], dtype=np.int32)
     
     # Fill the ROI polygon with white color on the mask to isolate the region of interest
@@ -35,7 +36,7 @@ def process_LaneDetection(img):
     
     # Apply the mask to the edges to keep only the edges inside the ROI
     masked_edges = cv2.bitwise_and(edges, mask)
-
+    cv2.imshow("maskedEdges2",masked_edges)
     # Detect lines using the Hough Line Transform on the masked edges
     lines = cv2.HoughLinesP(masked_edges, 1, np.pi / 180, 50, maxLineGap=200)
     
@@ -115,7 +116,7 @@ def process_video(video_path, show=True):
     - show (bool): If True, display the processed frames.
     """
     # Open the video
-    cap = cv2.VideoCapture(video_path)
+    cap = cv2.VideoCapture(0)
     if not cap.isOpened():
         print(f"Error: Unable to open video file {video_path}")
         return

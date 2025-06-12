@@ -7,7 +7,7 @@ from pathlib import Path
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # Load YOLOv5 model
-model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True).to(device)
+model = torch.hub.load('ultralytics/yolov5', 'yolov5s',trust_repo=True, pretrained=True).to(device)
 
 def detect_vehicles(image_path, output_dir='outputs'):
     """
@@ -50,8 +50,8 @@ def detect_vehicles(image_path, output_dir='outputs'):
     return output_path, vehicle_data
 
 if __name__ == "__main__":
-    input_dir = Path("/home/khogaly/graduation/vehicle_detector/images/")
-    output_dir = "/home/khogaly/graduation/vehicle_detector/output/"
+    input_dir = Path("/home/rpi/test11/images/")
+    output_dir = "/home/rpi/test11/output/"
 
     image_extensions = ('.jpg', '.jpeg', '.png', '.bmp')
 
